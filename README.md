@@ -1,77 +1,75 @@
-# Aviek Singh — Developer Portfolio
+# Aviek Portfolio
 
-A personal developer portfolio showcasing my technical skills, education, and journey in software development, artificial intelligence, and web technologies.
+A modern, responsive developer portfolio built with Next.js, React, TypeScript, and Tailwind-inspired custom styling. Designed to showcase my background, technical skills, and work through a clean interface with smooth animations and interactive elements.
 
-## ✨ Overview
+## 🌐 Live Website
 
-I'm a B.Tech Computer Science student at IILM University, interested in building useful software, exploring AI/ML, and creating modern, interactive web experiences.
+**Portfolio:** https://aviek-portfolio.vercel.app
 
-This portfolio brings my work together in one place, with a responsive interface, animated sections, and a theme that transitions between Graphite & Silver and Midnight Blue & Cyan.
+## ✨ Features
 
-## 🚀 Features
-
-- **Modern UI** — Minimal, typography-focused design.
-- **Responsive layout** — Adaptable sections for desktop and mobile screens.
-- **Animated interactions** — Motion-powered entrance animations and hover effects.
-- **Dynamic theme transition** — Changes visual theme when the Projects section enters the viewport.
-- **Project showcase** — Featured project cards with descriptions, technology tags, and repository links.
-- **Skills overview** — Technical skills organized by category.
-- **About and Education** — Information about my background and academic journey.
-- **Contact section** — A place to connect and discuss opportunities.
+- Minimalist, modern user interface
+- Responsive design for desktop, tablet, and mobile
+- Smooth animations and transitions
+- Interactive navigation
+- Dynamic theme transitions while scrolling
+- Dedicated sections for About, Skills, Education, and Contact
+- Custom profile and visual assets
+- Optimized production deployment with Vercel
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| Next.js | React framework |
-| React | Component-based UI |
-| TypeScript | Type-safe development |
-| CSS | Layout, styling, responsive design, and themes |
-| Motion | Animations and scroll interactions |
-| Lucide React | Icons |
-| Git & GitHub | Version control and source hosting |
+- **Framework:** Next.js
+- **Frontend:** React
+- **Language:** TypeScript
+- **Styling:** CSS
+- **Animations:** Motion
+- **Icons:** Lucide React
+- **Deployment:** Vercel
+- **Version Control:** Git and GitHub
 
-## 💻 Getting Started
+## 🚀 Getting Started
+
+Follow these steps to run the portfolio locally.
 
 ### Prerequisites
 
-- Node.js (a current LTS release is recommended)
+Make sure you have installed:
+
+- Node.js
 - npm
 - Git
 
 ### Installation
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Aviek-25/aviek-portfolio.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd aviek-portfolio
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Production Build
+Clone the repository:
 
 ```bash
-npm run build
-npm run start
+git clone https://github.com/Aviek-25/aviek-portfolio.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd aviek-portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the following URL in your browser:
+
+```text
+http://localhost:3000
 ```
 
 ## 📁 Project Structure
@@ -84,33 +82,58 @@ aviek-portfolio/
 │   └── page.tsx
 ├── public/
 │   └── images/
+│       ├── profile.png
+│       ├── kratos.png
+│       ├── sign-language.png
+│       └── web-projects.png
 ├── package.json
 ├── package-lock.json
+├── tsconfig.json
 └── README.md
 ```
 
-*Additional configuration files may be present in the project root.*
+*Note: This structure represents the expected main files and assets; your repository may contain additional configuration files.*
 
-## 🎯 Current Focus
+## 📦 Build for Production
 
-- Improving my software development skills.
-- Building practical projects with Python and web technologies.
-- Exploring artificial intelligence and machine learning.
-- Creating polished, interactive user experiences.
+To create a production build, run:
 
-## 📬 Connect
+```bash
+npm run build
+```
+
+To run the production build locally:
+
+```bash
+npm start
+```
+
+## ☁️ Deployment
+
+This portfolio is deployed using **Vercel** and connected to GitHub for version control.
+
+To deploy your own version:
+
+1. Fork or clone this repository.
+2. Import the repository into Vercel.
+3. Keep the default Next.js build settings.
+4. Deploy the application.
+
+Future commits pushed to the connected production branch can trigger automatic deployments.
+
+## 👨‍💻 About Me
+
+I'm a Computer Science student at IILM University interested in software development, artificial intelligence, and building practical technology solutions.
+
+I'm continuously learning, improving my development skills, and working on projects that combine programming and problem-solving.
+
+## 📬 Connect With Me
 
 - **GitHub:** [@Aviek-25](https://github.com/Aviek-25)
-- **Portfolio repository:** [aviek-portfolio](https://github.com/Aviek-25/aviek-portfolio)
-- **LinkedIn:** Add your LinkedIn profile URL here.
-- **Email:** Add your professional email address here.
-
-## 📄 License
-
-Add a license file if you want to specify permissions for reuse and redistribution.
+- **Portfolio:** [aviek-portfolio.vercel.app](https://aviek-portfolio.vercel.app)
 
 ---
 
-Built with curiosity and a commitment to continuous learning.
+⭐ If you find this portfolio useful or inspiring, feel free to explore the repository and connect with me.
 
-**© 2026 Aviek Singh**
+**Built with curiosity and code.**
