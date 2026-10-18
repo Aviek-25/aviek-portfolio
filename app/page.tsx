@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import {
   ArrowDownRight,
@@ -62,6 +62,57 @@ const skillGroups = [
 ];
 
 export default function Home() {
+
+  const [form, setForm] = useState({
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+});
+
+const [status, setStatus] = useState("");
+const [isSending, setIsSending] = useState(false);
+
+async function handleContactSubmit(
+  event: React.FormEvent<HTMLFormElement>
+) {
+  event.preventDefault();
+  setStatus("");
+  setIsSending(true);
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Unable to send your message.");
+    }
+
+    setStatus("Message sent successfully! I'll get back to you soon.");
+    setForm({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+  } catch (error) {
+    setStatus(
+      error instanceof Error
+        ? error.message
+        : "Something went wrong. Please try again."
+    );
+  } finally {
+    setIsSending(false);
+  }
+}
+  
   const projectsRef = useRef<HTMLElement | null>(null);
 
   // Switch themes when the Projects section enters/leaves the viewport.
@@ -380,26 +431,102 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* CONTACT */}
-      <motion.section
-        id="contact"
-        className="section contact-section"
-        variants={reveal}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <p className="section-label">05 / CONTACT</p>
-        <h2 className="section-title">Have an idea? Let&apos;s build it.</h2>
-        <p className="section-intro">
-          I&apos;m interested in connecting with people who build interesting
-          things.
-        </p>
+      
+{/* CONTACT */}
+<motion.section
+  id="contact"
+  className="section contact-section"
+  variants={reveal}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+>
+  <p className="section-label">05 / CONTACT</p>
+  <h2 className="section-title">Have an idea? Let&apos;s build it.</h2>
+  <p className="section-intro">
+    I&apos;m interested in connecting with people who build
+    interesting things.
+  </p>
 
-        <a className="button button-primary" href="mailto:your-email@example.com">
-          Say hello <ArrowUpRight size={17} />
-        </a>
-      </motion.section>
+  <form
+    className="contact-form"
+    onSubmit={handleContactSubmit}
+  >
+    <label htmlFor="contact-name">Name</label>
+    <input
+      id="contact-name"
+      name="name"
+      type="text"
+      autoComplete="name"
+      placeholder="Your name"
+      maxLength={100}
+      required
+      value={form.name}
+      onChange={(event) =>
+        setForm({ ...form, name: event.target.value })
+      }
+    />
+
+    <label htmlFor="contact-email">Email</label>
+    <input
+      id="contact-email"
+      name="email"
+      type="email"
+      autoComplete="email"
+      placeholder="you@example.com"
+      maxLength={254}
+      required
+      value={form.email}
+      onChange={(event) =>
+        setForm({ ...form, email: event.target.value })
+      }
+    />
+
+    <label htmlFor="contact-subject">Subject</label>
+    <input
+      id="contact-subject"
+      name="subject"
+      type="text"
+      placeholder="What would you like to discuss?"
+      maxLength={150}
+      required
+      value={form.subject}
+      onChange={(event) =>
+        setForm({ ...form, subject: event.target.value })
+      }
+    />
+
+    <label htmlFor="contact-message">Message</label>
+    <textarea
+      id="contact-message"
+      name="message"
+      placeholder="Tell me about your idea..."
+      rows={5}
+      maxLength={5000}
+      required
+      value={form.message}
+      onChange={(event) =>
+        setForm({ ...form, message: event.target.value })
+      }
+    />
+
+    <button
+      className="button button-primary"
+      type="submit"
+      disabled={isSending}
+    >
+      {isSending ? "Sending..." : "Send message"}
+      <ArrowUpRight size={17} />
+    </button>
+
+    {status && (
+      <p role="status" aria-live="polite">
+        {status}
+      </p>
+    )}
+  </form>
+</motion.section>
+
 
       {/* FOOTER */}
       <footer className="footer">

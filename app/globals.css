@@ -1201,3 +1201,43 @@ body[data-theme="cyan"] .portrait-image { mix-blend-mode: normal; }
     margin-bottom: 30px;
   }
 }
+
+.contact-form {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+  margin-top: 28px;
+}
+
+.contact-form label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible,
+.contact-form button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
