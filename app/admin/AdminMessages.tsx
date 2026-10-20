@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import {
   Archive,
   ArrowDownToLine,
@@ -363,7 +364,7 @@ export default function AdminMessages({
     <main className="admin-shell">
       <div className="admin-container">
         <header className="topbar">
-          <a className="brand" href="/" aria-label="Return to portfolio">
+          <Link className="brand" href="/" aria-label="Return to portfolio">
             <span className="brand-mark">
               <Sparkles size={19} />
             </span>
@@ -371,17 +372,17 @@ export default function AdminMessages({
               <strong>aviek<span className="cyan-text">.dev</span></strong>
               <small>ADMIN CONSOLE</small>
             </span>
-          </a>
+          </Link>
 
           <div className="topbar-right">
             <span className="secure-label">
               <ShieldCheck size={15} />
               Private workspace
             </span>
-            <a className="button button-secondary" href="/">
+            <Link className="button button-secondary" href="/">
               <ExternalLink size={15} />
               <span className="button-label">View portfolio</span>
-            </a>
+            </Link>
           </div>
         </header>
 

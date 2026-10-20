@@ -1391,3 +1391,432 @@ body[data-theme="cyan"] .portrait-image { mix-blend-mode: normal; }
   margin-bottom: 12px;
   line-height: 1.6;
 }
+
+/* ==========================================
+   AVIEK PORTFOLIO — MOTION & VISUAL POLISH
+   ========================================== */
+
+/* Shared animation tokens */
+:root {
+  --motion-fast: 180ms;
+  --motion-medium: 280ms;
+  --motion-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-border: color-mix(in srgb, var(--accent) 38%, var(--border));
+  --motion-glow: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* More polished scrolling */
+html {
+  scroll-padding-top: 32px;
+  scrollbar-gutter: stable;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  color: var(--bg);
+  background: var(--accent);
+}
+
+/* Navigation interactions */
+.site-header {
+  transition:
+    border-color 500ms ease,
+    background-color 500ms ease;
+}
+
+.brand {
+  transition:
+    opacity var(--motion-fast) ease,
+    transform var(--motion-medium) var(--motion-smooth);
+}
+
+.brand:hover {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  padding-block: 5px;
+  transition:
+    color var(--motion-fast) ease,
+    opacity var(--motion-fast) ease;
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--accent);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--motion-medium) var(--motion-smooth);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.availability {
+  transition: opacity var(--motion-fast) ease;
+}
+
+.availability:hover {
+  opacity: 0.78;
+}
+
+.status-dot {
+  animation: statusPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+}
+
+/* Hero atmosphere */
+.hero {
+  isolation: isolate;
+}
+
+.hero-copy {
+  animation: heroContentSettle 750ms var(--motion-smooth) both;
+}
+
+.hero-portrait {
+  transform-origin: center;
+}
+
+.portrait-image {
+  transition:
+    filter 500ms ease,
+    transform 650ms var(--motion-smooth);
+  will-change: transform;
+}
+
+.hero-portrait:hover .portrait-image {
+  transform: translateY(-4px) scale(1.012);
+}
+
+.portrait-caption {
+  transition: color var(--motion-medium) ease;
+}
+
+.hero-portrait:hover .portrait-caption {
+  color: var(--accent);
+}
+
+@keyframes heroContentSettle {
+  from {
+    opacity: 0.75;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section headings */
+.section-label {
+  transition:
+    color var(--motion-medium) ease,
+    letter-spacing var(--motion-medium) ease;
+}
+
+.section-label:hover {
+  letter-spacing: 0.1em;
+}
+
+.section-title {
+  text-wrap: balance;
+}
+
+/* Cards: refined depth without excessive movement */
+.about-card,
+.education-card,
+.skill-card,
+.project-card {
+  transition:
+    background-color 350ms ease,
+    border-color 350ms ease,
+    box-shadow 350ms ease,
+    transform 350ms var(--motion-smooth);
+}
+
+.about-card:hover,
+.education-card:hover {
+  border-color: var(--motion-border);
+  box-shadow: 0 12px 34px -24px var(--motion-glow);
+}
+
+.project-grid .project-card {
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 2px 0 transparent;
+  transition:
+    border-color 300ms ease,
+    box-shadow 350ms ease,
+    transform 350ms var(--motion-smooth);
+}
+
+.project-grid .project-card:hover {
+  border-color: var(--motion-border);
+  box-shadow:
+    0 18px 45px -30px var(--motion-glow),
+    0 2px 0 color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.project-image-link {
+  position: relative;
+}
+
+.project-image-link::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    transparent 55%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 350ms ease;
+}
+
+.project-card:hover .project-image-link::after {
+  opacity: 1;
+}
+
+.project-grid .project-image {
+  transition: transform 700ms var(--motion-smooth);
+}
+
+.project-grid .project-card:hover .project-image {
+  transform: scale(1.035);
+}
+
+/* Project links and tags */
+.project-open-link {
+  transition:
+    color var(--motion-fast) ease,
+    gap var(--motion-medium) var(--motion-smooth);
+}
+
+.project-open-link:hover {
+  gap: 12px;
+  text-decoration: none;
+}
+
+.project-status {
+  transition:
+    border-color var(--motion-medium) ease,
+    background-color var(--motion-medium) ease;
+}
+
+.tag {
+  transition:
+    color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    transform var(--motion-fast) ease;
+}
+
+.tag:hover {
+  color: var(--text);
+  border-color: var(--motion-border);
+  background: var(--motion-glow);
+  transform: translateY(-1px);
+}
+
+/* Skill badges */
+.skill-badge {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color var(--motion-fast) ease,
+    background-color var(--motion-medium) ease,
+    border-color var(--motion-medium) ease,
+    transform var(--motion-medium) var(--motion-smooth),
+    box-shadow var(--motion-medium) ease;
+}
+
+.skill-badge:hover {
+  border-color: var(--motion-border);
+  background: var(--motion-glow);
+  box-shadow: 0 5px 18px -14px var(--accent);
+  transform: translateY(-3px);
+}
+
+.skill-badge-dot {
+  transition:
+    transform var(--motion-medium) var(--motion-smooth),
+    box-shadow var(--motion-medium) ease;
+}
+
+.skill-badge:hover .skill-badge-dot {
+  box-shadow: 0 0 10px var(--accent);
+  transform: scale(1.2);
+}
+
+/* Buttons: tactile interaction */
+.button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color var(--motion-fast) ease,
+    background-color var(--motion-medium) ease,
+    border-color var(--motion-medium) ease,
+    box-shadow var(--motion-medium) ease,
+    transform var(--motion-fast) var(--motion-smooth);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.button-primary:hover {
+  box-shadow: 0 8px 24px -16px var(--accent);
+}
+
+.button-secondary:hover {
+  box-shadow: 0 5px 18px -14px var(--accent);
+}
+
+.button:focus-visible,
+.project-open-link:focus-visible,
+.project-link:focus-visible,
+.social-links a:focus-visible,
+.footer a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Social links */
+.social-links a {
+  transition:
+    color var(--motion-fast) ease,
+    transform var(--motion-medium) var(--motion-smooth);
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+}
+
+/* Contact form focus and submission feedback */
+.contact-form input,
+.contact-form textarea {
+  transition:
+    border-color var(--motion-medium) ease,
+    background-color var(--motion-medium) ease,
+    box-shadow var(--motion-medium) ease;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: var(--motion-border);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--motion-glow);
+}
+
+.contact-form button:disabled {
+  transform: none;
+  box-shadow: none;
+}
+
+.contact-form [role="status"] {
+  animation: statusMessageIn 350ms var(--motion-smooth) both;
+}
+
+@keyframes statusMessageIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer */
+.footer a {
+  transition:
+    color var(--motion-fast) ease,
+    transform var(--motion-medium) var(--motion-smooth);
+}
+
+.footer a:hover {
+  transform: translateY(-1px);
+}
+
+/* Mobile: keep effects subtle and responsive */
+@media (max-width: 760px) {
+  .hero-copy {
+    animation-duration: 500ms;
+  }
+
+  .project-grid .project-card:hover {
+    box-shadow: none;
+  }
+
+  .hero-portrait:hover .portrait-image {
+    transform: none;
+  }
+}
+
+/* Respect accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none !important;
+  }
+
+  .hero-copy {
+    animation: none !important;
+  }
+
+  .brand,
+  .nav-links a,
+  .nav-links a::after,
+  .project-grid .project-card,
+  .project-grid .project-image,
+  .portrait-image,
+  .skill-badge,
+  .skill-badge-dot,
+  .button,
+  .social-links a,
+  .contact-form input,
+  .contact-form textarea,
+  .footer a {
+    transition: none !important;
+    transform: none !important;
+  }
+}
