@@ -1,6 +1,7 @@
 
 import "server-only";
 
+import { Suspense } from "react";
 import { requireAdmin } from "@/lib/supabase/admins";
 import { createClient } from "@/lib/supabase/server";
 
@@ -14,19 +15,44 @@ type ContactMessage = {
   created_at: string;
 };
 
+export default function AdminPage() {
+  return (
+    <Suspense
+      fallback={
+        <main
+          style={{
+            minHeight: "100vh",
+            padding: "40px 24px",
+            background: "#f7f7f8",
+            color: "#171717",
+          }}
+        >
+          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+            <h1 style={{ fontSize: 32 }}>Portfolio Admin</h1>
+            <p style={{ color: "#666", marginTop: 12 }}>
+              Loading admin dashboard...
+            </p>
+          </div>
+        </main>
+      }
+    >
+      <AdminDashboard />
+    </Suspense>
+  );
+}
 
-
-export default async function AdminPage() {
+async function AdminDashboard() {
   const admin = await requireAdmin();
   const supabase = await createClient();
 
-  const {
-    data: messages,
-    error,
-  } = await supabase
+  const { data, error } = await supabase
     .from("contact_messages")
-    .select("id, name, email, subject, message, status, created_at")
+    .select(
+      "id, name, email, subject, message, status, created_at"
+    )
     .order("created_at", { ascending: false });
+
+  const messages = data as ContactMessage[] | null;
 
   return (
     <main
@@ -56,7 +82,13 @@ export default async function AdminPage() {
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: 10 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 10,
+              flexWrap: "wrap",
+            }}
+          >
             <a
               href="/admin"
               style={{
@@ -112,8 +144,8 @@ export default async function AdminPage() {
                 {error.message}
               </pre>
               <p style={{ marginTop: 8 }}>
-                Check the table name, column names, and the
-                SELECT permissions for the authenticated admin.
+                Check the table name, column names, SELECT
+                permissions, and RLS policies for the admin.
               </p>
             </div>
           ) : (
@@ -134,9 +166,9 @@ export default async function AdminPage() {
                 >
                   <h3>No enquiries returned</h3>
                   <p style={{ color: "#666", marginTop: 8 }}>
-                    The query returned zero rows. If Supabase
-                    Table Editor shows messages, check the
-                    table's SELECT permissions and RLS policies.
+                    No contact messages were returned. If Supabase
+                    Table Editor shows messages, check SELECT
+                    permissions and RLS policies.
                   </p>
                 </div>
               ) : (
@@ -147,7 +179,7 @@ export default async function AdminPage() {
                     marginTop: 20,
                   }}
                 >
-                  {messages.map((item: ContactMessage) => (
+                  {messages.map((item) => (
                     <article
                       key={item.id}
                       style={{
@@ -162,6 +194,7 @@ export default async function AdminPage() {
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
+                          alignItems: "flex-start",
                           flexWrap: "wrap",
                           gap: 8,
                         }}
@@ -184,6 +217,7 @@ export default async function AdminPage() {
                       <p style={{ marginTop: 12 }}>
                         <strong>Name:</strong> {item.name}
                       </p>
+
                       <p style={{ marginTop: 6 }}>
                         <strong>Email:</strong>{" "}
                         <a href={`mailto:${item.email}`}>
@@ -209,7 +243,9 @@ export default async function AdminPage() {
                         }}
                       >
                         Received:{" "}
-                        {new Date(item.created_at).toLocaleString("en-IN")}
+                        {new Date(
+                          item.created_at
+                        ).toLocaleString("en-IN")}
                       </p>
                     </article>
                   ))}
