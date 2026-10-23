@@ -1,139 +1,147 @@
-# Aviek Portfolio
+# Aviek Portfolio — Interactive Developer Portfolio
 
-A modern, responsive developer portfolio built with Next.js, React, TypeScript, and Tailwind-inspired custom styling. Designed to showcase my background, technical skills, and work through a clean interface with smooth animations and interactive elements.
+Welcome to my personal portfolio repository. This project is my digital space to showcase my background, technical skills, projects, and development journey. Built with a modern frontend stack, it combines a minimalist visual identity with smooth animations, interactive elements, and a custom backend-powered contact system.
 
-## 🌐 Live Website
+The goal is to create an immersive and responsive experience that reflects my interests in software development, artificial intelligence, and building practical technology solutions.
 
-**Portfolio:** https://aviek-portfolio.vercel.app
+## 🚀 Tech Stack Overview
 
-## ✨ Features
-
-- Minimalist, modern user interface
-- Responsive design for desktop, tablet, and mobile
-- Smooth animations and transitions
-- Interactive navigation
-- Dynamic theme transitions while scrolling
-- Dedicated sections for About, Skills, Education, and Contact
-- Custom profile and visual assets
-- Optimized production deployment with Vercel
-
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js
-- **Frontend:** React
+- **Framework:** Next.js 16
+- **Frontend:** React 19
 - **Language:** TypeScript
-- **Styling:** CSS
+- **Styling:** CSS3 and custom responsive styling
 - **Animations:** Motion
 - **Icons:** Lucide React
-- **Deployment:** Vercel
+- **Backend:** Next.js API Routes
+- **Database:** Supabase PostgreSQL
+- **Authentication:** Supabase Auth
+- **Email Service:** Resend
+- **Rate Limiting:** Upstash Redis
 - **Version Control:** Git and GitHub
+- **Hosting:** Vercel
 
-## 🚀 Getting Started
+## ✨ Features, Animations & Interactions
 
-Follow these steps to run the portfolio locally.
+This portfolio focuses on clean design, smooth transitions, and interactive user experiences.
 
-### Prerequisites
+- **Interactive Hero Section:** A personalized introduction with animated elements and a clean visual hierarchy.
+- **Smooth Scroll Animations:** Motion-powered reveal effects and transitions that make page navigation feel fluid.
+- **Dynamic Theme Transitions:** The visual theme changes as visitors scroll through different sections, transitioning into a Midnight Blue and Cyan aesthetic.
+- **Interactive Navigation:** Responsive navigation with smooth section-based navigation and visual feedback.
+- **Animated Project Showcase:** Dedicated project cards highlighting development work, technologies, and project details.
+- **Responsive Layout:** Optimized layouts for desktop, tablet, and mobile screens.
+- **Micro-interactions:** Subtle hover effects, animated buttons, transitions, and interactive visual elements.
+- **Reduced Motion Support:** Animation behavior respects the user's reduced-motion preferences.
 
-Make sure you have installed:
+## 📨 Contact System & Backend Integration
 
-- Node.js
-- npm
-- Git
+The portfolio includes a functional contact system that connects the frontend to backend services.
 
-### Installation
+**Contact form workflow:**
 
-Clone the repository:
+| Component | Technology | Purpose |
+|---|---|---|
+| Contact Form | React + TypeScript | Collects visitor messages |
+| API Endpoint | Next.js API Routes | Processes form submissions |
+| Database | Supabase | Stores contact messages |
+| Email Service | Resend | Sends email notifications |
+| Rate Limiting | Upstash Redis | Helps prevent spam submissions |
 
-```bash
-git clone https://github.com/Aviek-25/aviek-portfolio.git
-```
+**How it works:**
 
-Navigate to the project directory:
+1. A visitor submits a message through the contact form.
+2. The frontend sends the form data to the contact API endpoint.
+3. The backend validates and processes the submission.
+4. The message is stored in the Supabase database.
+5. Resend handles email notifications.
+6. Rate limiting helps protect the endpoint from excessive requests.
 
-```bash
-cd aviek-portfolio
-```
+## 🔐 Admin Dashboard
 
-Install dependencies:
+The portfolio also includes a private administration dashboard for managing contact messages.
 
-```bash
-npm install
-```
+**Dashboard capabilities:**
 
-Start the development server:
+- Secure administrator login using Supabase Authentication.
+- Server-side administrator authorization.
+- View messages submitted through the contact form.
+- Search and filter messages.
+- Update message statuses.
+- Archive and delete messages.
+- Open individual messages in a detailed popup.
+- Export message data to CSV.
+- Responsive dashboard interface.
 
-```bash
-npm run dev
-```
+**Dashboard design:**
 
-Open the following URL in your browser:
+The administration interface uses a Midnight Graphite and Cyan visual theme, with subtle animations, interactive elements, and a responsive layout.
 
-```text
-http://localhost:3000
-```
+Access to administrative functionality is restricted through authentication and server-side authorization.
+
+## 🎨 UI Design & Visual Identity
+
+The portfolio uses a minimalist design approach with a focus on typography, spacing, contrast, and subtle visual effects.
+
+- **Graphite & Silver:** A clean, monochromatic visual identity.
+- **Midnight Blue & Cyan:** An alternative visual theme used for the interactive project experience.
+- **Glass-inspired Elements:** Subtle layered surfaces and visual depth.
+- **Responsive Components:** Layouts adapt to different screen sizes.
+- **Interactive Feedback:** Hover states and transitions improve usability without overwhelming the interface.
 
 ## 📁 Project Structure
 
+The project is organized using the Next.js App Router architecture.
+
 ```text
 aviek-portfolio/
+│
 ├── app/
+│   ├── admin/
+│   │   ├── login/
+│   │   ├── page.tsx
+│   │   └── AdminMessages.tsx
+│   │
+│   ├── api/
+│   │   ├── admin/
+│   │   └── contact/
+│   │
 │   ├── globals.css
 │   ├── layout.tsx
 │   └── page.tsx
+│
+├── lib/
+│   └── supabase/
+│       ├── client.ts
+│       ├── server.ts
+│       ├── proxy.ts
+│       └── admins.ts
+│
 ├── public/
 │   └── images/
-│       ├── profile.png
-│       ├── kratos.png
-│       ├── sign-language.png
-│       └── web-projects.png
+│
+├── proxy.ts
 ├── package.json
 ├── package-lock.json
 ├── tsconfig.json
 └── README.md
 ```
 
-*Note: This structure represents the expected main files and assets; your repository may contain additional configuration files.*
 
-## 📦 Build for Production
 
-To create a production build, run:
+## ⚡ Performance & Reliability
 
-```bash
-npm run build
-```
+The project incorporates several practices to maintain a smooth and reliable experience.
 
-To run the production build locally:
+- Responsive CSS layouts for different devices.
+- Motion-based animations with reduced-motion considerations.
+- Production builds validated with Next.js.
+- TypeScript for improved code reliability.
+- Backend validation for contact submissions.
+- Rate limiting for additional API protection.
+- Authentication and authorization for administrative operations.
 
-```bash
-npm start
-```
 
-## ☁️ Deployment
-
-This portfolio is deployed using **Vercel** and connected to GitHub for version control.
-
-To deploy your own version:
-
-1. Fork or clone this repository.
-2. Import the repository into Vercel.
-3. Keep the default Next.js build settings.
-4. Deploy the application.
-
-Future commits pushed to the connected production branch can trigger automatic deployments.
-
-## 👨‍💻 About Me
-
-I'm a Computer Science student at IILM University interested in software development, artificial intelligence, and building practical technology solutions.
-
-I'm continuously learning, improving my development skills, and working on projects that combine programming and problem-solving.
-
-## 📬 Connect With Me
-
-- **GitHub:** [@Aviek-25](https://github.com/Aviek-25)
-- **Portfolio:** [aviek-portfolio.vercel.app](https://aviek-portfolio.vercel.app)
 
 ---
 
-⭐ If you find this portfolio useful or inspiring, feel free to explore the repository and connect with me.
-
-**Built with curiosity and code.**
+*Crafted with creativity, driven by technology.*
