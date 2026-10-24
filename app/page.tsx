@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -17,31 +18,50 @@ import {
 const projects = [
   {
     number: "01",
+    title: "Fin MAP — Personal Finance Tracker",
+    description:
+      "A personal finance dashboard for tracking income, expenses, monthly budgets, transactions, and spending analytics. Built with a Supabase-backed data layer and a responsive interface.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel",
+    ],
+    github: "https://github.com/Aviek-25/finance-tracker",
+    demo: "https://finance-tracker-beta-six-63.vercel.app",
+    image: "/images/fin-map.png",
+    featured: true,
+    status: "Deployed",
+  },
+  {
+    number: "02",
     title: "KRATOS Voice Assistant",
     description:
       "An AI voice assistant designed to interact with your computer, answer questions, and simplify everyday tasks.",
     tags: ["Python", "AI", "Voice Assistant"],
     github: "https://github.com/Aviek-25/KRATOS-Voice-Assistant",
     image: "/images/kratos.png",
-    featured: true,
+    featured: false,
     status: "In development",
   },
   {
-    number: "02",
+    number: "03",
     title: "Sign Language Recognition",
     description:
       "A computer vision project exploring image-based sign language recognition using machine learning.",
-    tags: ["Python", "Computer Vision", "ML"],
+    tags: ["Python", "Computer Vision", "Machine Learning"],
     github: "https://github.com/Aviek-25",
     image: "/images/sign-language.png",
     featured: false,
     status: "Project",
   },
   {
-    number: "03",
+    number: "04",
     title: "Web Development Projects",
     description:
-      "Interactive web interfaces and frontend experiments built with modern web technologies.",
+      "A collection of interactive web interfaces and frontend experiments built with modern web technologies.",
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Aviek-25",
     image: "/images/web-projects.png",
@@ -56,6 +76,7 @@ export default function Home() {
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("portfolio-theme");
     const initialTheme = savedTheme === "light" ? "light" : "dark";
+
     setTheme(initialTheme);
     document.documentElement.dataset.theme = initialTheme;
     document.body.dataset.theme = initialTheme;
@@ -63,6 +84,7 @@ export default function Home() {
 
   function toggleTheme() {
     const nextTheme = theme === "light" ? "dark" : "light";
+
     setTheme(nextTheme);
     document.documentElement.dataset.theme = nextTheme;
     document.body.dataset.theme = nextTheme;
@@ -79,7 +101,9 @@ export default function Home() {
   const [status, setStatus] = useState("");
   const [isSending, setIsSending] = useState(false);
 
-  async function handleContactSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleContactSubmit(
+    event: React.FormEvent<HTMLFormElement>,
+  ) {
     event.preventDefault();
     setStatus("");
     setIsSending(true);
@@ -100,6 +124,7 @@ export default function Home() {
       }
 
       setStatus("Message sent successfully! I'll get back to you soon.");
+
       setForm({
         name: "",
         email: "",
@@ -141,9 +166,7 @@ export default function Home() {
         <nav className="nav-links" aria-label="Main navigation">
           <a href="#about">/about</a>
           <a href="#skills">/skills</a>
-         
-         
-         <a href="#projects">/projects</a>
+          <a href="#projects">/projects</a>
           <a href="#contact">/contact</a>
         </nav>
 
@@ -164,7 +187,9 @@ export default function Home() {
           aria-label="Available for opportunities"
         >
           <span className="status-dot" />
-          <span className="availability-text">Available for opportunities</span>
+          <span className="availability-text">
+            Available for opportunities
+          </span>
         </a>
       </header>
 
@@ -206,6 +231,7 @@ export default function Home() {
             <a className="button button-primary" href="#projects">
               View projects <ArrowDownRight size={17} />
             </a>
+
             <a
               className="button button-secondary"
               href="https://github.com/Aviek-25"
@@ -214,6 +240,7 @@ export default function Home() {
             >
               GitHub <ArrowUpRight size={16} />
             </a>
+
             <a className="button button-secondary" href="#contact">
               Get in touch
             </a>
@@ -231,7 +258,9 @@ export default function Home() {
             alt="Portrait of Aviek"
             className="portrait-image"
           />
-          <span className="portrait-caption">BUILDING WITH PURPOSE · 2026</span>
+          <span className="portrait-caption">
+            BUILDING WITH PURPOSE · 2026
+          </span>
         </motion.div>
       </section>
 
@@ -253,8 +282,8 @@ export default function Home() {
 
         <div className="about-card">
           <p>
-            Currently pursuing B.Tech in Computer Science at IILM University, I
-            am exploring software engineering, artificial intelligence, and
+            Currently pursuing B.Tech in Computer Science at IILM University,
+            I am exploring software engineering, artificial intelligence, and
             interactive web development.
           </p>
 
@@ -347,96 +376,113 @@ export default function Home() {
         </div>
       </motion.section>
 
+     
+{/* PROJECTS */}
+<motion.section
+  id="projects"
+  className="section projects-section"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.1 }}
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: reduceMotion ? 0 : 0.12,
+      },
+    },
+  }}
+>
+  <div className="section-heading-row">
+    <div>
+      <p className="section-label">03 / SELECTED WORK</p>
+      <h2 className="section-title">Things I&apos;ve built.</h2>
+    </div>
+  </div>
 
-      {/* PROJECTS */}
-      <motion.section
-        id="projects"
-        className="section projects-section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: reduceMotion ? 0 : 0.12,
-            },
-          },
-        }}
+  <div className="project-grid">
+    {projects.slice(0, 3).map((project) => (
+      <motion.article
+        className={`project-card ${
+          project.featured ? "project-featured" : ""
+        }`}
+        key={project.number}
+        initial={false}
+        whileHover={reduceMotion ? {} : { y: -5 }}
+        transition={{ duration: 0.25 }}
       >
-        <div className="section-heading-row">
-          <div>
-            <p className="section-label">03 / SELECTED WORK</p>
-            <h2 className="section-title">Things I&apos;ve built.</h2>
+        <a
+          className="project-image-link"
+          href={project.github}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`View ${project.title} on GitHub`}
+        >
+          <img
+            src={project.image}
+            alt={`${project.title} preview`}
+            className="project-image"
+            loading={project.featured ? "eager" : "lazy"}
+          />
+        </a>
+
+        <div className="project-card-body">
+          <div className="project-card-heading">
+            <h3>{project.title}</h3>
+            <span
+              className={`project-status ${
+                project.featured ? "status-featured" : ""
+              }`}
+            >
+              {project.status}
+            </span>
           </div>
 
-          <a
-            className="text-link"
-            href="https://github.com/Aviek-25"
-            target="_blank"
-            rel="noreferrer"
-          >
-            All repositories <ArrowUpRight size={16} />
-          </a>
-        </div>
+          <p>{project.description}</p>
 
-        <div className="project-grid">
-          {projects.map((project) => (
-            <motion.article
-              className={`project-card ${project.featured ? "project-featured" : ""}`}
-              key={project.number}
-              initial={false}
-              whileHover={reduceMotion ? {} : { y: -5 }}
-              transition={{ duration: 0.25 }}
+          <div className="tag-list">
+            {project.tags.map((tag) => (
+              <span className="tag" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="project-actions">
+            <a
+              className="project-open-link"
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
             >
+              GitHub <ArrowUpRight size={16} />
+            </a>
+
+            {"demo" in project && project.demo && (
               <a
-                className="project-image-link"
-                href={project.github}
+                className="project-open-link project-demo-link"
+                href={project.demo}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={`View ${project.title} on GitHub`}
               >
-                <img
-                  src={project.image}
-                  alt={`${project.title} preview`}
-                  className="project-image"
-                  loading={project.featured ? "eager" : "lazy"}
-                />
+                Live demo <ArrowUpRight size={16} />
               </a>
-
-              <div className="project-card-body">
-                <div className="project-card-heading">
-                  <h3>{project.title}</h3>
-                  <span
-                    className={`project-status ${project.featured ? "status-featured" : ""}`}
-                  >
-                    {project.status}
-                  </span>
-                </div>
-
-                <p>{project.description}</p>
-
-                <div className="tag-list">
-                  {project.tags.map((tag) => (
-                    <span className="tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  className="project-open-link"
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View project <ArrowUpRight size={16} />
-                </a>
-              </div>
-            </motion.article>
-          ))}
+            )}
+          </div>
         </div>
-      </motion.section>
+      </motion.article>
+    ))}
+  </div>
+
+  {/* VIEW ALL PROJECTS BUTTON */}
+  <div className="projects-footer">
+    <a href="/projects" className="view-all-projects">
+      View all projects
+      <ArrowUpRight size={17} />
+    </a>
+  </div>
+</motion.section>
+
 
       {/* EDUCATION */}
       <motion.section
@@ -471,7 +517,6 @@ export default function Home() {
         viewport={{ once: true, amount: 0.2 }}
       >
         <div className="contact-layout">
-          {/* LEFT: CONTACT INFORMATION */}
           <div className="contact-copy">
             <p className="section-label">05 / LET&apos;S CONNECT</p>
 
@@ -479,13 +524,12 @@ export default function Home() {
 
             <p className="contact-description">
               I&apos;m interested in connecting with people who build
-              interesting things. Whether you have a project idea, collaboration
-              opportunity, or just want to talk about technology, feel free to
-              reach out.
+              interesting things. Whether you have a project idea,
+              collaboration opportunity, or just want to talk about
+              technology, feel free to reach out.
             </p>
 
             <div className="contact-links">
-              {/* LinkedIn */}
               <a
                 className="contact-link-card"
                 href="https://www.linkedin.com/in/aviek-pratap-singh-2857933ab/"
@@ -504,7 +548,6 @@ export default function Home() {
                 <ArrowUpRight size={18} />
               </a>
 
-              {/* GitHub */}
               <a
                 className="contact-link-card"
                 href="https://github.com/Aviek-25"
@@ -523,7 +566,6 @@ export default function Home() {
                 <ArrowUpRight size={18} />
               </a>
 
-              {/* Email */}
               <a
                 className="contact-link-card"
                 href="mailto:aviekgaur58@gmail.com"
@@ -542,7 +584,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* RIGHT: CONTACT FORM */}
           <div className="contact-form-panel">
             <h3>Send a Message</h3>
 
@@ -623,7 +664,11 @@ export default function Home() {
               </button>
 
               {status && (
-                <p className="contact-status" role="status" aria-live="polite">
+                <p
+                  className="contact-status"
+                  role="status"
+                  aria-live="polite"
+                >
                   {status}
                 </p>
               )}
@@ -641,3 +686,9 @@ export default function Home() {
     </main>
   );
 }
+<div className="projects-footer">
+  <a href="/projects" className="view-all-projects">
+    View all projects
+    <ArrowUpRight size={17} />
+  </a>
+</div>
