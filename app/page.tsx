@@ -1,18 +1,17 @@
-
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   ArrowDownRight,
   ArrowUpRight,
   Code2,
   UserRound,
   Mail,
-  ExternalLink,
-  Sparkles,
   Cpu,
   Terminal,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 const projects = [
@@ -51,84 +50,74 @@ const projects = [
   },
 ];
 
-const skillGroups = [
-  { title: "Languages", skills: ["Java", "Python", "JavaScript", "C"] },
-  { title: "Web", skills: ["HTML", "CSS", "React", "Next.js"] },
-  {
-    title: "AI / ML",
-    skills: ["Machine Learning", "Computer Vision"],
-  },
-  { title: "Tools", skills: ["Git", "GitHub", "VS Code"] },
-];
-
 export default function Home() {
-
-  const [form, setForm] = useState({
-  name: "",
-  email: "",
-  subject: "",
-  message: "",
-});
-
-const [status, setStatus] = useState("");
-const [isSending, setIsSending] = useState(false);
-
-async function handleContactSubmit(
-  event: React.FormEvent<HTMLFormElement>
-) {
-  event.preventDefault();
-  setStatus("");
-  setIsSending(true);
-
-  try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.error || "Unable to send your message.");
-    }
-
-    setStatus("Message sent successfully! I'll get back to you soon.");
-    setForm({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-  } catch (error) {
-    setStatus(
-      error instanceof Error
-        ? error.message
-        : "Something went wrong. Please try again."
-    );
-  } finally {
-    setIsSending(false);
-  }
-}
-  
-  const projectsRef = useRef<HTMLElement | null>(null);
-
-  // Switch themes when the Projects section enters/leaves the viewport.
-  const projectsInView = useInView(projectsRef, {
-    amount: 0.15,
-  });
-
-  const reduceMotion = useReducedMotion();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    document.body.dataset.theme = projectsInView ? "cyan" : "graphite";
+    const savedTheme = window.localStorage.getItem("portfolio-theme");
+    const initialTheme = savedTheme === "dark" ? "dark" : "light";
+    setTheme(initialTheme);
+    document.documentElement.dataset.theme = initialTheme;
+    document.body.dataset.theme = initialTheme;
+  }, []);
 
-    return () => {
-      delete document.body.dataset.theme;
-    };
-  }, [projectsInView]);
+  function toggleTheme() {
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    document.body.dataset.theme = nextTheme;
+    window.localStorage.setItem("portfolio-theme", nextTheme);
+  }
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
+  async function handleContactSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("");
+    setIsSending(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Unable to send your message.");
+      }
+
+      setStatus("Message sent successfully! I'll get back to you soon.");
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+    } finally {
+      setIsSending(false);
+    }
+  }
+
+  const reduceMotion = useReducedMotion();
 
   const reveal = {
     hidden: reduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 },
@@ -150,13 +139,30 @@ async function handleContactSubmit(
         </a>
 
         <nav className="nav-links" aria-label="Main navigation">
-          <a href="#projects">/projects</a>
-          <a href="#skills">/skills</a>
           <a href="#about">/about</a>
+          <a href="#skills">/skills</a>
+         
+         
+         <a href="#projects">/projects</a>
           <a href="#contact">/contact</a>
         </nav>
 
-        <a className="availability" href="#contact" aria-label="Available for opportunities">
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+          title={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+        >
+          {theme === "light" ? <Moon size={17} /> : <Sun size={17} />}
+          <span>{theme === "light" ? "Dark mode" : "Light mode"}</span>
+        </button>
+
+        <a
+          className="availability"
+          href="#contact"
+          aria-label="Available for opportunities"
+        >
           <span className="status-dot" />
           <span className="availability-text">Available for opportunities</span>
         </a>
@@ -190,32 +196,26 @@ async function handleContactSubmit(
           </motion.h1>
 
           <motion.p className="hero-description" variants={reveal}>
-            I&apos;m Aviek, a B.Tech Computer Science student at IILM University,
-            exploring full-stack development, artificial intelligence, and
-            creative technology. I turn ideas into useful digital experiences.
+            I&apos;m Aviek, a B.Tech Computer Science student at IILM
+            University, exploring full-stack development, artificial
+            intelligence, and creative technology. I turn ideas into useful
+            digital experiences.
           </motion.p>
 
           <motion.div className="hero-actions" variants={reveal}>
             <a className="button button-primary" href="#projects">
               View projects <ArrowDownRight size={17} />
             </a>
-            <a className="button button-secondary" href="https://github.com/Aviek-25" target="_blank" rel="noreferrer">
+            <a
+              className="button button-secondary"
+              href="https://github.com/Aviek-25"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub <ArrowUpRight size={16} />
             </a>
             <a className="button button-secondary" href="#contact">
               Get in touch
-            </a>
-          </motion.div>
-
-          <motion.div className="social-links" variants={reveal}>
-            <a href="https://github.com/Aviek-25" target="_blank" rel="noreferrer">
-              <Code2 size={17} /> GitHub
-            </a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-              <UserRound size={17} /> LinkedIn
-            </a>
-            <a href="#contact">
-              <Mail size={17} /> Email
             </a>
           </motion.div>
         </motion.div>
@@ -249,27 +249,107 @@ async function handleContactSubmit(
             <p className="section-label">01 / ABOUT</p>
             <h2 className="section-title">About me.</h2>
           </div>
-
         </div>
 
         <div className="about-card">
           <p>
-            Currently pursuing B.Tech in Computer Science at IILM University,
-            I am exploring software engineering, artificial intelligence, and
+            Currently pursuing B.Tech in Computer Science at IILM University, I
+            am exploring software engineering, artificial intelligence, and
             interactive web development.
           </p>
 
           <div className="about-details">
-            <div><Terminal size={19} /><span>Building projects</span></div>
-            <div><Cpu size={19} /><span>Exploring AI</span></div>
-            <div><Code2 size={19} /><span>Learning by doing</span></div>
+            <div>
+              <Terminal size={19} />
+              <span>Building projects</span>
+            </div>
+            <div>
+              <Cpu size={19} />
+              <span>Exploring AI</span>
+            </div>
+            <div>
+              <Code2 size={19} />
+              <span>Learning by doing</span>
+            </div>
           </div>
         </div>
       </motion.section>
 
-      {/* PROJECTS — this section triggers the cyan theme */}
+      {/* SKILLS */}
       <motion.section
-        ref={projectsRef}
+        id="skills"
+        className="section skills-section"
+        variants={reveal}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <p className="section-label">02 / SKILLS</p>
+        <h2 className="section-title">What I work with</h2>
+
+        <div className="skills-grid">
+          {[
+            {
+              title: "LANGUAGES",
+              skills: [
+                "Python",
+                "Java",
+                "C",
+                "C++",
+                "JavaScript",
+                "HTML",
+                "CSS",
+              ],
+            },
+            {
+              title: "FRONTEND",
+              skills: [
+                "HTML/CSS",
+                "JavaScript",
+                "React",
+                "Next.js",
+                "Three.js",
+              ],
+            },
+            {
+              title: "BACKEND & TOOLS",
+              skills: [
+                "Python",
+                "Node.js",
+                "Git & GitHub",
+                "VS Code",
+                "REST APIs",
+              ],
+            },
+            {
+              title: "AI / ML TOOLING",
+              skills: [
+                "Machine Learning",
+                "Computer Vision",
+                "TensorFlow",
+                "Generative AI",
+              ],
+            },
+          ].map((group) => (
+            <div className="skill-group" key={group.title}>
+              <h3>{group.title}</h3>
+
+              <div className="skill-badges">
+                {group.skills.map((skill) => (
+                  <span className="skill-badge" key={skill}>
+                    <span className="skill-badge-dot" aria-hidden="true" />
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+
+      {/* PROJECTS */}
+      <motion.section
         id="projects"
         className="section projects-section"
         initial="hidden"
@@ -286,7 +366,7 @@ async function handleContactSubmit(
       >
         <div className="section-heading-row">
           <div>
-            <p className="section-label">02 / SELECTED WORK</p>
+            <p className="section-label">03 / SELECTED WORK</p>
             <h2 className="section-title">Things I&apos;ve built.</h2>
           </div>
 
@@ -305,7 +385,7 @@ async function handleContactSubmit(
             <motion.article
               className={`project-card ${project.featured ? "project-featured" : ""}`}
               key={project.number}
-              variants={reveal}
+              initial={false}
               whileHover={reduceMotion ? {} : { y: -5 }}
               transition={{ duration: 0.25 }}
             >
@@ -327,7 +407,9 @@ async function handleContactSubmit(
               <div className="project-card-body">
                 <div className="project-card-heading">
                   <h3>{project.title}</h3>
-                  <span className={`project-status ${project.featured ? "status-featured" : ""}`}>
+                  <span
+                    className={`project-status ${project.featured ? "status-featured" : ""}`}
+                  >
                     {project.status}
                   </span>
                 </div>
@@ -336,7 +418,9 @@ async function handleContactSubmit(
 
                 <div className="tag-list">
                   {project.tags.map((tag) => (
-                    <span className="tag" key={tag}>{tag}</span>
+                    <span className="tag" key={tag}>
+                      {tag}
+                    </span>
                   ))}
                 </div>
 
@@ -353,60 +437,6 @@ async function handleContactSubmit(
           ))}
         </div>
       </motion.section>
-
-     
-{/* SKILLS */}
-<motion.section
-  id="skills"
-  className="section skills-section"
-  variants={reveal}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
->
-  <p className="section-label">~/skills</p>
-  <h2 className="section-title">What I work with</h2>
-
-  <div className="skills-grid">
-    {[
-      {
-        title: "LANGUAGES",
-        skills: ["Python", "Java", "C", "C++", "JavaScript", "HTML", "CSS"],
-      },
-      {
-        title: "FRONTEND",
-        skills: ["HTML/CSS", "JavaScript", "React", "Next.js", "Three.js"],
-      },
-      {
-        title: "BACKEND & TOOLS",
-        skills: ["Python", "Node.js", "Git & GitHub", "VS Code", "REST APIs"],
-      },
-      {
-        title: "AI / ML TOOLING",
-        skills: [
-          "Machine Learning",
-          "Computer Vision",
-          "TensorFlow",
-          "Generative AI",
-        ],
-      },
-    ].map((group) => (
-      <div className="skill-group" key={group.title}>
-        <h3>{group.title}</h3>
-
-        <div className="skill-badges">
-          {group.skills.map((skill) => (
-            <span className="skill-badge" key={skill}>
-              <span className="skill-badge-dot" aria-hidden="true" />
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-    ))}
-  </div>
-</motion.section>
-
 
       {/* EDUCATION */}
       <motion.section
@@ -431,102 +461,176 @@ async function handleContactSubmit(
         </div>
       </motion.section>
 
-      
-{/* CONTACT */}
-<motion.section
-  id="contact"
-  className="section contact-section"
-  variants={reveal}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
->
-  <p className="section-label">05 / CONTACT</p>
-  <h2 className="section-title">Have an idea? Let&apos;s build it.</h2>
-  <p className="section-intro">
-    I&apos;m interested in connecting with people who build
-    interesting things.
-  </p>
+      {/* CONTACT */}
+      <motion.section
+        id="contact"
+        className="section contact-section contact-shell"
+        variants={reveal}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="contact-layout">
+          {/* LEFT: CONTACT INFORMATION */}
+          <div className="contact-copy">
+            <p className="section-label">05 / LET&apos;S CONNECT</p>
 
-  <form
-    className="contact-form"
-    onSubmit={handleContactSubmit}
-  >
-    <label htmlFor="contact-name">Name</label>
-    <input
-      id="contact-name"
-      name="name"
-      type="text"
-      autoComplete="name"
-      placeholder="Your name"
-      maxLength={100}
-      required
-      value={form.name}
-      onChange={(event) =>
-        setForm({ ...form, name: event.target.value })
-      }
-    />
+            <h2 className="contact-title">Get in touch.</h2>
 
-    <label htmlFor="contact-email">Email</label>
-    <input
-      id="contact-email"
-      name="email"
-      type="email"
-      autoComplete="email"
-      placeholder="you@example.com"
-      maxLength={254}
-      required
-      value={form.email}
-      onChange={(event) =>
-        setForm({ ...form, email: event.target.value })
-      }
-    />
+            <p className="contact-description">
+              I&apos;m interested in connecting with people who build
+              interesting things. Whether you have a project idea, collaboration
+              opportunity, or just want to talk about technology, feel free to
+              reach out.
+            </p>
 
-    <label htmlFor="contact-subject">Subject</label>
-    <input
-      id="contact-subject"
-      name="subject"
-      type="text"
-      placeholder="What would you like to discuss?"
-      maxLength={150}
-      required
-      value={form.subject}
-      onChange={(event) =>
-        setForm({ ...form, subject: event.target.value })
-      }
-    />
+            <div className="contact-links">
+              {/* LinkedIn */}
+              <a
+                className="contact-link-card"
+                href="https://www.linkedin.com/in/aviek-pratap-singh-2857933ab/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="contact-link-icon">
+                  <UserRound size={20} />
+                </span>
 
-    <label htmlFor="contact-message">Message</label>
-    <textarea
-      id="contact-message"
-      name="message"
-      placeholder="Tell me about your idea..."
-      rows={5}
-      maxLength={5000}
-      required
-      value={form.message}
-      onChange={(event) =>
-        setForm({ ...form, message: event.target.value })
-      }
-    />
+                <span className="contact-link-content">
+                  <small>LinkedIn Profile</small>
+                  <strong>linkedin.com/in/aviek-pratap-singh</strong>
+                </span>
 
-    <button
-      className="button button-primary"
-      type="submit"
-      disabled={isSending}
-    >
-      {isSending ? "Sending..." : "Send message"}
-      <ArrowUpRight size={17} />
-    </button>
+                <ArrowUpRight size={18} />
+              </a>
 
-    {status && (
-      <p role="status" aria-live="polite">
-        {status}
-      </p>
-    )}
-  </form>
-</motion.section>
+              {/* GitHub */}
+              <a
+                className="contact-link-card"
+                href="https://github.com/Aviek-25"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="contact-link-icon">
+                  <Code2 size={20} />
+                </span>
 
+                <span className="contact-link-content">
+                  <small>GitHub Repositories</small>
+                  <strong>github.com/Aviek-25</strong>
+                </span>
+
+                <ArrowUpRight size={18} />
+              </a>
+
+              {/* Email */}
+              <a
+                className="contact-link-card"
+                href="mailto:aviekgaur58@gmail.com"
+              >
+                <span className="contact-link-icon">
+                  <Mail size={20} />
+                </span>
+
+                <span className="contact-link-content">
+                  <small>Email Address</small>
+                  <strong>aviekgaur58@gmail.com</strong>
+                </span>
+
+                <ArrowUpRight size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* RIGHT: CONTACT FORM */}
+          <div className="contact-form-panel">
+            <h3>Send a Message</h3>
+
+            <p className="contact-form-description">
+              Have an opportunity or question? Send me a message directly.
+            </p>
+
+            <form
+              id="contact-form"
+              className="contact-form"
+              onSubmit={handleContactSubmit}
+            >
+              <label htmlFor="contact-name">Your Name *</label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                placeholder="e.g. Steve"
+                maxLength={100}
+                required
+                value={form.name}
+                onChange={(event) =>
+                  setForm({ ...form, name: event.target.value })
+                }
+              />
+
+              <label htmlFor="contact-email">Your Email *</label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="steve@company.com"
+                maxLength={254}
+                required
+                value={form.email}
+                onChange={(event) =>
+                  setForm({ ...form, email: event.target.value })
+                }
+              />
+
+              <label htmlFor="contact-subject">Subject</label>
+              <input
+                id="contact-subject"
+                name="subject"
+                type="text"
+                placeholder="Internship Opportunity / Project Collaboration"
+                maxLength={150}
+                required
+                value={form.subject}
+                onChange={(event) =>
+                  setForm({ ...form, subject: event.target.value })
+                }
+              />
+
+              <label htmlFor="contact-message">Message *</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="Hi Aviek, I came across your portfolio and would like to talk..."
+                rows={5}
+                maxLength={5000}
+                required
+                value={form.message}
+                onChange={(event) =>
+                  setForm({ ...form, message: event.target.value })
+                }
+              />
+
+              <button
+                className="button button-primary contact-submit"
+                type="submit"
+                disabled={isSending}
+              >
+                {isSending ? "Sending..." : "Send Message"}
+                <ArrowUpRight size={17} />
+              </button>
+
+              {status && (
+                <p className="contact-status" role="status" aria-live="polite">
+                  {status}
+                </p>
+              )}
+            </form>
+          </div>
+        </div>
+      </motion.section>
 
       {/* FOOTER */}
       <footer className="footer">
