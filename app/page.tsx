@@ -51,11 +51,11 @@ const projects = [
 ];
 
 export default function Home() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("portfolio-theme");
-    const initialTheme = savedTheme === "dark" ? "dark" : "light";
+    const initialTheme = savedTheme === "light" ? "light" : "dark";
     setTheme(initialTheme);
     document.documentElement.dataset.theme = initialTheme;
     document.body.dataset.theme = initialTheme;
