@@ -2,20 +2,65 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aviek Pratap Singh | Developer Portfolio",
+  metadataBase: new URL("https://aviek-portfolio.vercel.app"),
+
+  title: {
+    default: "Aviek Pratap Singh | Developer Portfolio",
+    template: "%s | Aviek Pratap Singh",
+  },
+
   description:
-    "Aviek Pratap Singh is a Computer Science student at IILM University, building software, AI projects, and interactive web experiences.",
+    "Explore the portfolio of Aviek Pratap Singh, a developer building web applications, AI projects, and interactive digital experiences.",
+
   keywords: [
     "Aviek Pratap Singh",
     "Developer Portfolio",
-    "Computer Science",
+    "Web Developer",
     "Artificial Intelligence",
-    "Web Development",
+    "AI Projects",
+    "Frontend Development",
     "React",
     "Next.js",
+    "JavaScript",
+    "Computer Science",
   ],
+
   authors: [{ name: "Aviek Pratap Singh" }],
   creator: "Aviek Pratap Singh",
+  publisher: "Aviek Pratap Singh",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: "Aviek Pratap Singh | Developer Portfolio",
+    description:
+      "Explore my projects, technical skills, and work in web development and artificial intelligence.",
+    url: "https://aviek-portfolio.vercel.app",
+    siteName: "Aviek Pratap Singh Portfolio",
+    locale: "en_IN",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Aviek Pratap Singh | Developer Portfolio",
+    description:
+      "Explore my projects, technical skills, and work in web development and artificial intelligence.",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({

@@ -4042,3 +4042,425 @@ html body main.project-detail-page img {
   background: rgba(56, 189, 248, 0.14) !important;
   border-color: rgba(56, 189, 248, 0.55) !important;
 }
+
+
+/* =====================================
+   MOBILE RESPONSIVENESS — NAVIGATION
+===================================== */
+
+@media (max-width: 600px) {
+  main#home {
+    width: calc(100% - 28px);
+  }
+
+  .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .availability {
+    margin-left: auto;
+  }
+
+  .nav-links {
+    order: 3;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    gap: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+}
+
+/* =====================================
+   MOBILE RESPONSIVENESS — HERO
+===================================== */
+
+@media (max-width: 600px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 38px 0 55px;
+    min-height: 0;
+  }
+
+  .hero-portrait {
+    width: min(72%, 230px);
+    max-height: 230px;
+    min-height: 0;
+    margin: 0 auto;
+  }
+
+  .portrait-image {
+    width: 100%;
+    max-height: 230px;
+    object-fit: contain;
+  }
+
+  .portrait-caption {
+    font-size: 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(36px, 9vw, 46px);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+  .hero-actions .button {
+    min-height: 42px;
+    font-size: 11px;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+/* =====================================
+   SCROLL REVEAL ANIMATIONS
+===================================== */
+
+@keyframes portfolioReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enable only where scroll-driven animations are supported */
+@supports (animation-timeline: view()) {
+  .section,
+  .project-grid .project-card,
+  .skill-card,
+  .education-card {
+    animation: portfolioReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+}
+
+/* Accessibility: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .project-grid .project-card,
+  .skill-card,
+  .education-card {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* =====================================
+   INTERACTIVE PROJECT CARD ANIMATIONS
+===================================== */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.project-card img {
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  border-color: #38BDF8;
+  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.12);
+}
+
+.project-card:hover img {
+  transform: scale(1.045);
+}
+
+.project-card h2 {
+  transition: color 0.3s ease;
+}
+
+.project-card:hover h2 {
+  color: #38BDF8;
+}
+
+.project-card a {
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.project-card a:hover {
+  color: #38BDF8;
+}
+
+/* Keyboard accessibility */
+.project-card:focus-within {
+  outline: 2px solid #38BDF8;
+  outline-offset: 4px;
+}
+
+/* Touch devices */
+@media (hover: none) {
+  .project-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .project-card:hover img {
+    transform: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card img,
+  .project-card h2,
+  .project-card a {
+    transition: none !important;
+  }
+
+  .project-card:hover,
+  .project-card:hover img {
+    transform: none;
+  }
+}
+
+/* =====================================
+   BUTTON INTERACTIONS
+===================================== */
+
+button,
+.hero-actions a,
+.project-card a,
+.contact-links a {
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero-actions a:hover,
+button:hover {
+  transform: translateY(-3px);
+}
+
+.hero-actions a:active,
+button:active {
+  transform: scale(0.96);
+}
+
+/* =====================================
+   NAVIGATION UNDERLINE ANIMATION
+===================================== */
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: #38BDF8;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* =====================================
+   SMOOTH SECTION SCROLLING
+===================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+/* =====================================
+   KEYBOARD FOCUS
+===================================== */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #38BDF8;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* =====================================
+   REDUCED MOTION ACCESSIBILITY
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  button,
+  a,
+  .nav-links a::after {
+    transition: none !important;
+  }
+
+  .hero-actions a:hover,
+  button:hover,
+  .hero-actions a:active,
+  button:active {
+    transform: none;
+  }
+}
+
+/* =====================================
+   HERO ENTRANCE ANIMATIONS
+===================================== */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hero image */
+.hero-portrait {
+  animation: heroImageReveal 0.9s ease-out both;
+}
+
+/* Hero text */
+.hero-title {
+  animation: heroFadeUp 0.75s ease-out 0.15s both;
+}
+
+.hero-description {
+  animation: heroFadeUp 0.75s ease-out 0.3s both;
+}
+
+/* Hero buttons */
+.hero-actions {
+  animation: heroFadeUp 0.75s ease-out 0.45s both;
+}
+
+/* Social links */
+.social-links {
+  animation: heroFadeUp 0.75s ease-out 0.6s both;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait,
+  .hero-title,
+  .hero-description,
+  .hero-actions,
+  .social-links {
+    animation: none !important;
+  }
+}
+/* FINAL ANIMATION POLISH */
+
+/* Avoid hover effects on touch-only devices */
+@media (hover: none) {
+  .hero-actions a:hover,
+  button:hover {
+    transform: none;
+  }
+}
+
+/* Keep animations smooth on smaller screens */
+@media (max-width: 600px) {
+  .project-card:hover {
+    transform: none;
+  }
+
+  .project-card:hover img {
+    transform: none;
+  }
+
+  .hero-portrait {
+    animation-duration: 0.7s;
+  }
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
