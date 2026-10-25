@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aviek-portfolio.vercel.app"),
+  metadataBase: new URL("https://aviek.in"),
 
   title: {
     default: "Aviek Pratap Singh | Developer Portfolio",
@@ -10,18 +10,20 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Explore the portfolio of Aviek Pratap Singh, a developer building web applications, AI projects, and interactive digital experiences.",
+    "Explore the portfolio of Aviek Pratap Singh, showcasing web development, AI engineering projects, technical skills, and interactive digital experiences.",
 
   keywords: [
     "Aviek Pratap Singh",
+    "Aviek Singh Portfolio",
     "Developer Portfolio",
-    "Web Developer",
-    "Artificial Intelligence",
+    "AI Engineering",
     "AI Projects",
+    "Web Developer",
     "Frontend Development",
     "React",
     "Next.js",
     "JavaScript",
+    "TypeScript",
     "Computer Science",
   ],
 
@@ -30,14 +32,14 @@ export const metadata: Metadata = {
   publisher: "Aviek Pratap Singh",
 
   alternates: {
-    canonical: "/",
+    canonical: "https://aviek.in",
   },
 
   openGraph: {
     title: "Aviek Pratap Singh | Developer Portfolio",
     description:
       "Explore my projects, technical skills, and work in web development and artificial intelligence.",
-    url: "https://aviek-portfolio.vercel.app",
+    url: "https://aviek.in",
     siteName: "Aviek Pratap Singh Portfolio",
     locale: "en_IN",
     type: "website",
