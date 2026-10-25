@@ -8,25 +8,29 @@ import AdminMessages, {
   type ContactMessage,
 } from "./AdminMessages";
 
+
+
 function AdminLoading() {
   return (
     <main
       style={{
         minHeight: "100vh",
         padding: "40px 24px",
-        background: "#f7f7f8",
-        color: "#171717",
+        background: "#0b0f17",
+        color: "#f8fafc",
       }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <h1 style={{ fontSize: 32 }}>Portfolio Admin</h1>
-        <p style={{ marginTop: 12, color: "#737373" }}>
+        <p style={{ marginTop: 12, color: "#94a3b8" }}>
           Loading your secure dashboard...
         </p>
       </div>
     </main>
   );
 }
+
+
 
 async function AdminPageContent() {
   // Keep authentication and database access inside the Suspense boundary.
@@ -54,7 +58,9 @@ async function AdminPageContent() {
 export default function AdminPage() {
   return (
     <Suspense fallback={<AdminLoading />}>
+      
       <AdminPageContent />
+
     </Suspense>
   );
 }

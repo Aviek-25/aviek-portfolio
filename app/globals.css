@@ -4632,3 +4632,22 @@ button:focus-visible {
 .admin-login .admin-login-card button {
   color: #ffffff !important;
 }
+
+/* =========================================
+   ADMIN DASHBOARD — FULL DARK BACKGROUND
+   Does not affect the public portfolio or login
+========================================= */
+
+html:has(body .admin-dashboard),
+body:has(.admin-dashboard) {
+  background: #090d14 !important;
+  color-scheme: dark;
+}
+
+body:has(.admin-dashboard) {
+  color: #f8fafc;
+}
+
+.admin-dashboard {
+  background: transparent;
+}
