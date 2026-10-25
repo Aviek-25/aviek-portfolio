@@ -21,59 +21,65 @@ const projects: Project[] = [
     title: "Fin MAP — Personal Finance Tracker",
     description:
       "A personal finance dashboard for tracking income, expenses, monthly budgets, transactions, and spending analytics. Built with a Supabase-backed data layer and a responsive interface.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Vercel"],
+    tags: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel",
+    ],
     image: "/images/fin-map.png",
-    status: "Deployed",
+    status: "Live",
   },
   {
     number: "02",
     slug: "devvault",
     title: "DevVault",
     description:
-      "A web project built to provide a useful developer-focused experience. Explore its features and implementation.",
-    tags: ["Web Development", "Vercel"],
+      "A developer workspace to save, organize, search, and manage reusable code snippets and programming resources. Built with Firebase and Monaco Editor.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Firebase",
+      "Firestore",
+      "Monaco Editor",
+      "Vercel",
+    ],
     image: "/images/devvault.png",
-    status: "Deployed",
+    status: "Live",
   },
   {
     number: "03",
     slug: "cyberpulse",
     title: "CyberPulse",
     description:
-      "A cybersecurity dashboard project focused on presenting security-related information. The project is currently under development.",
-    tags: ["Cybersecurity", "Dashboard", "Web Development"],
+      "A cybersecurity dashboard concept designed to present security-related information through a structured and modern interface.",
+    tags: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Cybersecurity",
+      "Dashboard",
+    ],
     image: "/images/cyberpulse.png",
-    status: "Under development",
+    status: "In Development",
   },
   {
     number: "04",
     slug: "kratos",
-    title: "KRATOS Voice Assistant",
+    title: "KRATOS AI — Voice Assistant",
     description:
-      "An AI voice assistant designed to interact with your computer, answer questions, and simplify everyday tasks.",
-    tags: ["Python", "AI", "Voice Assistant"],
+      "A personal AI voice assistant inspired by JARVIS, exploring voice interaction, AI model integrations, and computer-assistant workflows.",
+    tags: [
+      "Python",
+      "Gemini API",
+      "OpenAI API",
+      "OpenRouter",
+      "Speech Recognition",
+    ],
     image: "/images/kratos.png",
-    status: "In development",
-  },
-  {
-    number: "05",
-    slug: "sign-language",
-    title: "Sign Language Recognition",
-    description:
-      "A computer vision project exploring image-based sign language recognition using machine learning.",
-    tags: ["Python", "Computer Vision", "Machine Learning"],
-    image: "/images/sign-language.png",
-    status: "Project",
-  },
-  {
-    number: "06",
-    slug: "web-development",
-    title: "Web Development Projects",
-    description:
-      "A collection of interactive web interfaces and frontend experiments built with modern web technologies.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    image: "/images/web-projects.png",
-    status: "Project",
+    status: "In Development",
   },
 ];
 
@@ -129,9 +135,10 @@ export default function ProjectsPage() {
         <div className="section-heading-row all-projects-heading">
           <div>
             <p className="section-label">PROJECT ARCHIVE</p>
-            <h1 className="section-title">All projects.</h1>
+            <h1 className="section-title">Things I've built.</h1>
             <p className="section-intro">
-              A collection of projects, experiments, and things I have been building.
+              A collection of projects, experiments, and ideas brought to life
+              through code.
             </p>
           </div>
 
@@ -150,7 +157,7 @@ export default function ProjectsPage() {
             <a
               className="project-card project-card-link"
               key={project.number}
-              href={`/project-pages/${project.slug}.html`}
+              href={`/project-pages/${project.slug}`}
               aria-label={`Open ${project.title} project page`}
             >
               <div className="project-image-link">

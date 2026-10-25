@@ -4030,3 +4030,15 @@ html body main.project-detail-page img {
 .project-card-link .project-card-body {
   pointer-events: none;
 }
+/* Blue project status badges */
+.project-status {
+  color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.10) !important;
+  border: 1px solid rgba(56, 189, 248, 0.40) !important;
+}
+
+.project-status.status-featured {
+  color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.14) !important;
+  border-color: rgba(56, 189, 248, 0.55) !important;
+}

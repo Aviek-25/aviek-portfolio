@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4F4F0">
+  <meta name="description" content="DevVault — A developer snippet manager for organizing, saving and accessing reusable code.">
+
+  <title>DevVault | Aviek Pratap Singh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/project-assets/devvault/devvault.css">
+<script src="/project-assets/project-pages.js" defer></script>
+</head>
+
+<body class="devvault-page">
+  <div class="dv-shell">
+
+    <!-- Navigation -->
+    <nav class="dv-nav">
+      <a href="/" class="dv-brand">aviek.dev</a>
+
+      <div class="dv-nav-actions">
+        <a href="/projects" class="dv-nav-link">← Back to projects</a>
+        <a href="/" class="dv-nav-link">⌂ Portfolio</a>
+
+        <button
+          type="button"
+          class="dv-theme-toggle"
+          id="themeToggle"
+          aria-label="Switch theme"
+          title="Switch theme"
+        >
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="dv-hero">
+
+        <div class="dv-meta">
+          <span>2026</span>
+          <span class="dv-status"><i></i> Deployed</span>
+        </div>
+
+        <p class="dv-eyebrow">DEVELOPER PRODUCTIVITY TOOL</p>
+
+        <h1>Dev<span>Vault.</span></h1>
+
+        <p class="dv-description">
+          Your code, organized. Save reusable code snippets, manage collections,
+          and access your developer knowledge from one centralized workspace.
+        </p>
+
+        <!-- Project Preview -->
+        <div class="dv-preview">
+
+          <div class="dv-preview-top">
+            <div class="dv-window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <span class="dv-preview-title">DEVVAULT / WORKSPACE</span>
+            <span class="dv-preview-version">01.0</span>
+          </div>
+
+          <div class="dv-app">
+
+            <aside class="dv-sidebar">
+              <div class="dv-sidebar-brand">DEV<span>VAULT</span></div>
+
+              <div class="dv-sidebar-label">WORKSPACE</div>
+
+              <div class="dv-sidebar-item active">
+                <span>▦</span> All Snippets
+              </div>
+
+              <div class="dv-sidebar-item">
+                <span>★</span> Favorites
+              </div>
+
+              <div class="dv-sidebar-label">COLLECTIONS</div>
+
+              <div class="dv-sidebar-item">
+                <span class="dv-folder">●</span> JavaScript
+              </div>
+
+              <div class="dv-sidebar-item">
+                <span class="dv-folder">●</span> React
+              </div>
+
+              <div class="dv-sidebar-item">
+                <span class="dv-folder">●</span> Python
+              </div>
+
+              <div class="dv-sidebar-item">
+                <span class="dv-folder">●</span> Utilities
+              </div>
+            </aside>
+
+            <div class="dv-editor-area">
+
+              <div class="dv-editor-heading">
+                <div>
+                  <span class="dv-editor-label">YOUR LIBRARY</span>
+                  <h3>Code snippets</h3>
+                </div>
+
+                <span class="dv-new-button">+ New Snippet</span>
+              </div>
+
+              <div class="dv-search">⌕ &nbsp; Search your snippets...</div>
+
+              <div class="dv-snippet-card">
+                <div class="dv-snippet-heading">
+                  <div>
+                    <h4>Debounce Function</h4>
+                    <p>Reusable JavaScript utility</p>
+                  </div>
+                  <span class="dv-language">JAVASCRIPT</span>
+                </div>
+
+                <div class="dv-code">
+                  <div><span class="dv-line">01</span> <span class="dv-keyword">function</span> <span class="dv-function">debounce</span>(fn, delay) {</div>
+                  <div><span class="dv-line">02</span> &nbsp; <span class="dv-keyword">let</span> timer;</div>
+                  <div><span class="dv-line">03</span></div>
+                  <div><span class="dv-line">04</span> &nbsp; <span class="dv-keyword">return</span> (...args) =&gt; {</div>
+                  <div><span class="dv-line">05</span> &nbsp; &nbsp; clearTimeout(timer);</div>
+                  <div><span class="dv-line">06</span> &nbsp; &nbsp; timer = setTimeout(() =&gt; fn(...args), delay);</div>
+                  <div><span class="dv-line">07</span> &nbsp; };</div>
+                  <div><span class="dv-line">08</span> }</div>
+                </div>
+
+                <div class="dv-code-footer">
+                  <span># javascript</span>
+                  <span>★ &nbsp; Copy snippet</span>
+                </div>
+              </div>
+
+              <div class="dv-snippet-bottom">
+                <span>12 snippets saved</span>
+                <span>Cloud workspace</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="dv-stack">
+          <span class="dv-stack-label">TECHNOLOGY STACK</span>
+
+          <div class="dv-tags">
+            <span>Next.js</span>
+            <span>TypeScript</span>
+            <span>Firebase</span>
+            <span>Firestore</span>
+            <span>Monaco Editor</span>
+            <span>Motion</span>
+            <span>Lucide</span>
+            <span>Vercel</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="dv-actions">
+          <a
+            href="https://devvault-seven-beta.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="dv-button dv-button-light"
+          >
+            Visit Live Site <span>↗</span>
+          </a>
+
+          <a
+            href="https://github.com/Aviek-25/devvault"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="dv-button dv-button-dark"
+          >
+            View Source <span>↗</span>
+          </a>
+        </div>
+
+      </section>
+
+      <!-- Overview -->
+      <section class="dv-overview">
+
+        <div class="dv-section-heading">
+          <div>
+            <p class="dv-eyebrow">APPLICATION OVERVIEW</p>
+            <h2>Everything in its <span>place.</span></h2>
+          </div>
+
+          <span class="dv-section-number">02 / OVERVIEW</span>
+        </div>
+
+        <p class="dv-about-description">
+          DevVault is a developer-focused snippet management application.
+          It provides a structured workspace to save, organize, search and
+          reuse code without having to look through scattered files or notes.
+          With cloud-backed storage and an integrated code editor, your
+          development resources stay organized in one place.
+        </p>
+
+      </section>
+
+      <!-- Features -->
+      <section class="dv-features-section">
+
+        <div class="dv-section-heading">
+          <div>
+            <p class="dv-eyebrow">WHAT IT OFFERS</p>
+            <h2>Built for your <span>workflow.</span></h2>
+          </div>
+
+          <span class="dv-section-number">03 / FEATURES</span>
+        </div>
+
+        <div class="dv-feature-grid">
+
+          <article class="dv-feature">
+            <span class="dv-feature-number">01</span>
+            <div class="dv-feature-icon">⌘</div>
+            <h3>Snippet Management</h3>
+            <p>Save and organize reusable code snippets in a centralized library.</p>
+          </article>
+
+          <article class="dv-feature">
+            <span class="dv-feature-number">02</span>
+            <div class="dv-feature-icon">▤</div>
+            <h3>Code Editor</h3>
+            <p>Work with code in an integrated editor with syntax highlighting.</p>
+          </article>
+
+          <article class="dv-feature">
+            <span class="dv-feature-number">03</span>
+            <div class="dv-feature-icon">☁</div>
+            <h3>Cloud Storage</h3>
+            <p>Store your snippets using Firebase and Firestore integration.</p>
+          </article>
+
+          <article class="dv-feature">
+            <span class="dv-feature-number">04</span>
+            <div class="dv-feature-icon">⌕</div>
+            <h3>Search & Organization</h3>
+            <p>Find saved snippets and organize them with collections and tags.</p>
+          </article>
+
+          <article class="dv-feature">
+            <span class="dv-feature-number">05</span>
+            <div class="dv-feature-icon">★</div>
+            <h3>Favorites</h3>
+            <p>Keep frequently used snippets easy to find and access.</p>
+          </article>
+
+          <article class="dv-feature">
+            <span class="dv-feature-number">06</span>
+            <div class="dv-feature-icon">◈</div>
+            <h3>Authentication</h3>
+            <p>Access your personal workspace through user authentication.</p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section class="dv-closing">
+        <p class="dv-eyebrow">EXPLORE THE PROJECT</p>
+
+        <h2>Keep your code<br>within <span>reach.</span></h2>
+
+        <p>
+          Explore DevVault and see how a structured snippet library
+          can simplify your development workflow.
+        </p>
+
+        <div class="dv-actions">
+          <a
+            href="https://devvault-seven-beta.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="dv-button dv-button-light"
+          >
+            Open Live App ↗
+          </a>
+
+          <a
+            href="https://github.com/Aviek-25/devvault"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="dv-button dv-button-dark"
+          >
+            GitHub Repository ↗
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="dv-footer">
+      <a href="/projects">← All projects</a>
+      <span>Designed & built by Aviek Pratap Singh</span>
+    </footer>
+
+  </div>
+</body>
+</html>

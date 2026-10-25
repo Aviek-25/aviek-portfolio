@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4F4F0">
+  <meta name="description" content="CyberPulse — A cybersecurity dashboard concept for security visibility and threat awareness.">
+
+  <title>CyberPulse | Aviek Pratap Singh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/project-assets/cyberpulse/cyberpulse.css">
+  <script src="/project-assets/project-pages.js" defer></script>
+</head>
+
+<body class="cyberpulse-page">
+  <div class="cp-shell">
+
+    <!-- Navigation -->
+    <nav class="cp-nav">
+      <a href="/" class="cp-brand">aviek.dev</a>
+
+      <div class="cp-nav-actions">
+        <a href="/projects" class="cp-nav-link">← Back to projects</a>
+        <a href="/" class="cp-nav-link">⌂ Portfolio</a>
+
+        <button
+          type="button"
+          class="cp-theme-toggle"
+          id="themeToggle"
+          aria-label="Switch theme"
+          title="Switch theme"
+        >
+          <svg class="cp-sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+
+          <svg class="cp-moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="cp-hero">
+
+        <div class="cp-meta">
+          <span>2026</span>
+          <span class="cp-status"><i></i> Project Concept</span>
+        </div>
+
+        <p class="cp-eyebrow">CYBERSECURITY / DASHBOARD</p>
+
+        <h1>Cyber<span>Pulse.</span></h1>
+
+        <p class="cp-description">
+          A cybersecurity dashboard concept designed to bring security
+          information, system visibility and threat awareness into one
+          structured interface.
+        </p>
+
+        <!-- Dashboard Preview -->
+        <div class="cp-preview">
+
+          <div class="cp-preview-top">
+            <div class="cp-window-controls">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <span class="cp-preview-title">CYBERPULSE / SECURITY OVERVIEW</span>
+            <span class="cp-preview-version">DASHBOARD 01</span>
+          </div>
+
+          <div class="cp-dashboard">
+
+            <!-- Sidebar -->
+            <aside class="cp-sidebar">
+              <div class="cp-sidebar-brand">
+                <span class="cp-brand-mark">⌁</span>
+                CYBER<span>PULSE</span>
+              </div>
+
+              <div class="cp-sidebar-label">MAIN MENU</div>
+
+              <div class="cp-sidebar-item active">
+                <span>▦</span> Overview
+              </div>
+
+              <div class="cp-sidebar-item">
+                <span>⌁</span> Security Events
+              </div>
+
+              <div class="cp-sidebar-item">
+                <span>◈</span> Threat Analysis
+              </div>
+
+              <div class="cp-sidebar-item">
+                <span>▤</span> System Activity
+              </div>
+
+              <div class="cp-sidebar-label">MANAGEMENT</div>
+
+              <div class="cp-sidebar-item">
+                <span>⌘</span> Devices
+              </div>
+
+              <div class="cp-sidebar-item">
+                <span>⚙</span> Settings
+              </div>
+
+              <div class="cp-sidebar-note">
+                <span class="cp-note-dot"></span>
+                DEMO INTERFACE
+              </div>
+            </aside>
+
+            <!-- Dashboard Content -->
+            <div class="cp-dashboard-main">
+
+              <div class="cp-dashboard-heading">
+                <div>
+                  <span class="cp-dashboard-label">SECURITY CENTER</span>
+                  <h3>Overview</h3>
+                  <p>Your security workspace at a glance.</p>
+                </div>
+
+                <span class="cp-date">DEMO VIEW / 2026</span>
+              </div>
+
+              <!-- Summary Cards -->
+              <div class="cp-stat-grid">
+
+                <div class="cp-stat-card">
+                  <span class="cp-stat-label">SECURITY EVENTS</span>
+                  <strong>1,284</strong>
+                  <small>Illustrative data</small>
+                  <span class="cp-stat-icon">⌁</span>
+                </div>
+
+                <div class="cp-stat-card">
+                  <span class="cp-stat-label">ALERTS REVIEWED</span>
+                  <strong>086</strong>
+                  <small>Illustrative data</small>
+                  <span class="cp-stat-icon">◈</span>
+                </div>
+
+                <div class="cp-stat-card">
+                  <span class="cp-stat-label">MONITORED DEVICES</span>
+                  <strong>024</strong>
+                  <small>Illustrative data</small>
+                  <span class="cp-stat-icon">▣</span>
+                </div>
+
+              </div>
+
+              <!-- Chart -->
+              <div class="cp-panel cp-chart-panel">
+                <div class="cp-panel-heading">
+                  <div>
+                    <span class="cp-panel-label">ACTIVITY OVERVIEW</span>
+                    <h4>Event distribution</h4>
+                  </div>
+                  <span class="cp-demo-tag">SAMPLE DATA</span>
+                </div>
+
+                <div class="cp-chart">
+                  <div class="cp-chart-y">
+                    <span>100</span>
+                    <span>75</span>
+                    <span>50</span>
+                    <span>25</span>
+                    <span>0</span>
+                  </div>
+
+                  <div class="cp-chart-content">
+                    <div class="cp-chart-grid">
+                      <span></span><span></span><span></span>
+                      <span></span><span></span>
+                    </div>
+
+                    <svg viewBox="0 0 600 180" preserveAspectRatio="none" class="cp-chart-svg" aria-label="Illustrative security event activity chart">
+                      <defs>
+                        <linearGradient id="cpChartGradient" x1="0" x2="0" y1="0" y2="1">
+                          <stop offset="0%" stop-color="#FF5500" stop-opacity=".32"/>
+                          <stop offset="100%" stop-color="#FF5500" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+
+                      <path
+                        d="M0 135 C40 120 55 145 95 112 S155 95 190 115 S245 65 285 88 S345 112 380 65 S435 82 475 45 S535 68 600 20 L600 180 L0 180 Z"
+                        fill="url(#cpChartGradient)"
+                      />
+
+                      <path
+                        d="M0 135 C40 120 55 145 95 112 S155 95 190 115 S245 65 285 88 S345 112 380 65 S435 82 475 45 S535 68 600 20"
+                        fill="none"
+                        stroke="#FF6A2B"
+                        stroke-width="3"
+                        vector-effect="non-scaling-stroke"
+                      />
+                    </svg>
+
+                    <div class="cp-chart-x">
+                      <span>MON</span>
+                      <span>TUE</span>
+                      <span>WED</span>
+                      <span>THU</span>
+                      <span>FRI</span>
+                      <span>SAT</span>
+                      <span>SUN</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event List -->
+              <div class="cp-panel cp-events-panel">
+                <div class="cp-panel-heading">
+                  <div>
+                    <span class="cp-panel-label">ACTIVITY LOG</span>
+                    <h4>Recent security events</h4>
+                  </div>
+                  <span class="cp-demo-tag">SAMPLE DATA</span>
+                </div>
+
+                <div class="cp-event-row">
+                  <span class="cp-event-indicator warning"></span>
+                  <div class="cp-event-info">
+                    <strong>Unusual login activity</strong>
+                    <small>Authentication event</small>
+                  </div>
+                  <span class="cp-event-severity warning-text">REVIEW</span>
+                </div>
+
+                <div class="cp-event-row">
+                  <span class="cp-event-indicator critical"></span>
+                  <div class="cp-event-info">
+                    <strong>Suspicious traffic pattern</strong>
+                    <small>Network activity event</small>
+                  </div>
+                  <span class="cp-event-severity critical-text">HIGH</span>
+                </div>
+
+                <div class="cp-event-row">
+                  <span class="cp-event-indicator normal"></span>
+                  <div class="cp-event-info">
+                    <strong>System activity recorded</strong>
+                    <small>System event</small>
+                  </div>
+                  <span class="cp-event-severity normal-text">INFO</span>
+                </div>
+              </div>
+
+              <p class="cp-disclaimer">
+                VISUAL CONCEPT — ALL DASHBOARD METRICS AND EVENTS ARE ILLUSTRATIVE.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="cp-stack">
+          <span class="cp-stack-label">TECHNOLOGY STACK</span>
+
+          <div class="cp-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Cybersecurity</span>
+            <span>Dashboard UI</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="cp-actions">
+          <a
+            href="https://github.com/Aviek-25/Cyberpulse"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cp-button cp-button-light"
+          >
+            View Source <span>↗</span>
+          </a>
+        </div>
+
+      </section>
+
+      <!-- Overview -->
+      <section class="cp-overview">
+
+        <div class="cp-section-heading">
+          <div>
+            <p class="cp-eyebrow">PROJECT OVERVIEW</p>
+            <h2>Security with <span>clarity.</span></h2>
+          </div>
+
+          <span class="cp-section-number">02 / OVERVIEW</span>
+        </div>
+
+        <p class="cp-about-description">
+          CyberPulse explores the design of a centralized cybersecurity
+          dashboard. The project focuses on presenting security-related
+          information through a structured interface, making it easier to
+          understand events, review alerts and navigate system activity.
+          Its dashboard layout is designed around clarity, information
+          hierarchy and a security-focused visual language.
+        </p>
+
+      </section>
+
+      <!-- Features -->
+      <section class="cp-features-section">
+
+        <div class="cp-section-heading">
+          <div>
+            <p class="cp-eyebrow">CORE CONCEPTS</p>
+            <h2>Designed for <span>visibility.</span></h2>
+          </div>
+
+          <span class="cp-section-number">03 / FEATURES</span>
+        </div>
+
+        <div class="cp-feature-grid">
+
+          <article class="cp-feature">
+            <span class="cp-feature-number">01</span>
+            <div class="cp-feature-icon">▦</div>
+            <h3>Security Overview</h3>
+            <p>A centralized dashboard layout for presenting security information.</p>
+          </article>
+
+          <article class="cp-feature">
+            <span class="cp-feature-number">02</span>
+            <div class="cp-feature-icon">⌁</div>
+            <h3>Event Visualization</h3>
+            <p>A visual approach to displaying security event activity and trends.</p>
+          </article>
+
+          <article class="cp-feature">
+            <span class="cp-feature-number">03</span>
+            <div class="cp-feature-icon">◈</div>
+            <h3>Alert Interface</h3>
+            <p>A structured interface concept for reviewing security alerts.</p>
+          </article>
+
+          <article class="cp-feature">
+            <span class="cp-feature-number">04</span>
+            <div class="cp-feature-icon">▣</div>
+            <h3>Device Overview</h3>
+            <p>A dedicated dashboard area for representing monitored devices.</p>
+          </article>
+
+          <article class="cp-feature">
+            <span class="cp-feature-number">05</span>
+            <div class="cp-feature-icon">▤</div>
+            <h3>Activity Logs</h3>
+            <p>A readable event log layout for organizing security-related activity.</p>
+          </article>
+
+          <article class="cp-feature">
+            <span class="cp-feature-number">06</span>
+            <div class="cp-feature-icon">◉</div>
+            <h3>Security-Focused UI</h3>
+            <p>A high-contrast interface designed around information hierarchy.</p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section class="cp-closing">
+        <p class="cp-eyebrow">EXPLORE THE PROJECT</p>
+
+        <h2>Stay aware.<br>Think <span>secure.</span></h2>
+
+        <p>
+          Explore the CyberPulse project and its approach to cybersecurity
+          dashboard design.
+        </p>
+
+        <div class="cp-actions">
+          <a
+            href="https://github.com/Aviek-25/Cyberpulse"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cp-button cp-button-dark"
+          >
+            GitHub Repository ↗
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="cp-footer">
+      <a href="/projects">← All projects</a>
+      <span>Designed & built by Aviek Pratap Singh</span>
+    </footer>
+
+  </div>
+</body>
+</html>

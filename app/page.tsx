@@ -29,45 +29,34 @@ const projects = [
       "PostgreSQL",
       "Vercel",
     ],
-    github: "https://github.com/Aviek-25/finance-tracker",
-    demo: "https://finance-tracker-beta-six-63.vercel.app",
+    page: "/project-pages/fin-map",
     image: "/images/fin-map.png",
     featured: true,
-    status: "Deployed",
+    status: "Live",
   },
   {
     number: "02",
-    title: "KRATOS Voice Assistant",
+    title: "DevVault",
     description:
-      "An AI voice assistant designed to interact with your computer, answer questions, and simplify everyday tasks.",
-    tags: ["Python", "AI", "Voice Assistant"],
-    github: "https://github.com/Aviek-25/KRATOS-Voice-Assistant",
-    image: "/images/kratos.png",
+      "A developer-focused snippet manager for organizing, searching, saving, and reusing code snippets with cloud-backed storage.",
+    tags: ["Next.js", "TypeScript", "Firebase", "Firestore", "Monaco Editor"],
+    page: "/project-pages/devvault",
+    image: "/images/devvault.png",
     featured: false,
-    status: "In development",
+    status: "Live",
   },
   {
     number: "03",
-    title: "Sign Language Recognition",
+    title: "CyberPulse",
     description:
-      "A computer vision project exploring image-based sign language recognition using machine learning.",
-    tags: ["Python", "Computer Vision", "Machine Learning"],
-    github: "https://github.com/Aviek-25",
-    image: "/images/sign-language.png",
+      "A cybersecurity dashboard concept for presenting security events, threat indicators, and system activity in one interface.",
+    tags: ["HTML", "CSS", "JavaScript", "Cybersecurity", "Dashboard"],
+    page: "/project-pages/cyberpulse",
+    image: "/images/cyberpulse.png",
     featured: false,
-    status: "Project",
+    status: "In Development",
   },
-  {
-    number: "04",
-    title: "Web Development Projects",
-    description:
-      "A collection of interactive web interfaces and frontend experiments built with modern web technologies.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/Aviek-25",
-    image: "/images/web-projects.png",
-    featured: false,
-    status: "Project",
-  },
+ 
 ];
 
 export default function Home() {
@@ -401,30 +390,26 @@ export default function Home() {
   </div>
 
   <div className="project-grid">
-    {projects.slice(0, 3).map((project) => (
-      <motion.article
-        className={`project-card ${
+    {projects.map((project) => (
+      <motion.a
+        className={`project-card project-card-link ${
           project.featured ? "project-featured" : ""
         }`}
         key={project.number}
+        href={project.page}
+        aria-label={`View ${project.title} project`}
         initial={false}
         whileHover={reduceMotion ? {} : { y: -5 }}
         transition={{ duration: 0.25 }}
       >
-        <a
-          className="project-image-link"
-          href={project.github}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`View ${project.title} on GitHub`}
-        >
+        <div className="project-image-link">
           <img
             src={project.image}
             alt={`${project.title} preview`}
             className="project-image"
             loading={project.featured ? "eager" : "lazy"}
           />
-        </a>
+        </div>
 
         <div className="project-card-body">
           <div className="project-card-heading">
@@ -449,28 +434,12 @@ export default function Home() {
           </div>
 
           <div className="project-actions">
-            <a
-              className="project-open-link"
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub <ArrowUpRight size={16} />
-            </a>
-
-            {"demo" in project && project.demo && (
-              <a
-                className="project-open-link project-demo-link"
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live demo <ArrowUpRight size={16} />
-              </a>
-            )}
+            <span className="project-open-link">
+              View Project <ArrowUpRight size={16} />
+            </span>
           </div>
         </div>
-      </motion.article>
+      </motion.a>
     ))}
   </div>
 
@@ -686,9 +655,3 @@ export default function Home() {
     </main>
   );
 }
-<div className="projects-footer">
-  <a href="/projects" className="view-all-projects">
-    View all projects
-    <ArrowUpRight size={17} />
-  </a>
-</div>
